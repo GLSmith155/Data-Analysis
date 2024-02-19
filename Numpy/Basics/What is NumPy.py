@@ -65,7 +65,7 @@ ndarray class to become the de-facto language of multi-dimensional data intercha
 NumPy’s array class is called ndarray. It is also known by the alias array. Note that numpy.array is not the same as the Standard Python Library class array.array, 
 which only handles one-dimensional arrays and offers less functionality. 
 
-he more important attributes of an ndarray object are:
+The more important attributes of an ndarray object are:
 
 ndarray.ndim
 the number of axes (dimensions) of the array.
