@@ -90,10 +90,10 @@ the buffer containing the actual elements of the array. Normally, we won’t nee
 
 Here are examples of ndarray's main attributes:
 '''
-a = np.arange(15).reshape(3, 5) # This is a clean way to go ahead and establish the dimensions of array a.
-                                # And if we remove this line, then all of the below code still works.
-                                # Do this when you want to go ahead and ensure that we don't mistype and
-                                # create an array of incorrect dimensions when we type in the numberes below.
+a = np.arange(15).reshape(3, 5) ''' This is a clean way to go ahead and establish the dimensions of array a.
+                                    And if we remove this line, then all of the below code still works.
+                                    Do this when you want to go ahead and ensure that we don't mistype and
+                                    create an array of incorrect dimensions when we type in the numberes below. '''
 a = np.array([[ 0,  1,  2,  3,  4],
               [ 5,  6,  7,  8,  9],
               [10, 11, 12, 13, 14]])
