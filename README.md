@@ -1,2 +1,2 @@
 # Data-Analysis
-Repository of Learning / Refreshing on Data Analysis Tools
+This repository is for learning and refreshing developers on useful data analysis tools.
