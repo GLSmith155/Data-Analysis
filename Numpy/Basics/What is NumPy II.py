@@ -48,3 +48,46 @@ np.empty((2, 3))
 '''
 To create sequences of numbers, NumPy provides the arange function which is analogous to the Python built-in range, but returns an array.
 '''
+np.arange(10, 30, 5) # Generate an array of of numbers from 10 to 30 counting by 5's. The first number is inclusive, while the high number is not.
+#array([10, 15, 20, 25])
+np.arange(0, 2, 0.3)  # It accepts float arguments.
+#array([0. , 0.3, 0.6, 0.9, 1.2, 1.5, 1.8])
+'''
+When arange is used with floating point arguments, it is generally not possible to predict the number of elements obtained, due to the finite 
+floating point precision. For this reason, it is usually better to use the function linspace that receives as an argument the number of elements 
+that we want, instead of the step:
+"Finite precision is decimal representation of a number which has been rounded or truncated. There many cases where this may be necessary or appropriate. For example 1/3 and the transcendental 
+numbers e and π all have infinite decimal representations."
+'''
+np.linspace(0, 2, 9)   # array([0.  , 0.25, 0.5 , 0.75, 1.  , 1.25, 1.5 , 1.75, 2.  ])          Creates an array with 9 elements between 0 and 2 - inclusive 0 and 2.
+'''
+Arithmetic operators on arrays apply elementwise. A new array is created and filled with the result.
+a = np.array([20, 30, 40, 50])
+10 * np.sin(a)
+array([ 9.12945251, -9.88031624,  7.4511316 , -2.62374854])
+a < 35
+array([ True,  True, False, False])
+'''
+
+'''
+Unlike in many matrix languages, the product operator * operates elementwise in NumPy arrays. 
+The matrix product can be performed using the @ operator (in python >=3.5) or the dot function or method:
+
+A = np.array([[1, 1],
+              [0, 1]])
+B = np.array([[2, 0],
+              [3, 4]])
+              
+A * B     # elementwise product, as in the first element 1 just multiples the first element 2, so not matrix multiplication.
+array([[2, 0],
+       [0, 4]])
+       
+A @ B     # matrix product
+array([[5, 4],
+       [3, 4]])
+       
+A.dot(B)  # another matrix product
+array([[5, 4],
+       [3, 4]])
+
+'''
