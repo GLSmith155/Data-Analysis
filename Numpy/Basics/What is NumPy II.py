@@ -90,4 +90,75 @@ A.dot(B)  # another matrix product
 array([[5, 4],
        [3, 4]])
 
+*= Multiply an existing array.
++= Add to an existing array.
+
+When operating with arrays of different types, the type of the resulting array corresponds to the more general or precise one (a behavior known as upcasting).
+
+  a = np.ones(3, dtype=np.int32)
+  b = np.linspace(0, pi, 3)
+  b.dtype.name
+# 'float64'
+  c = a + b
+  c
+# array([1.        , 2.57079633, 4.14159265])
+  c.dtype.name
+# 'float64'
+
+Many unary operations, such as computing the sum of all the elements in the array, are implemented as methods of the ndarray class:
 '''
+rg = np.random.default_rng(1)  # create instance of default random number generator
+z = rg.random((2, 3))
+z
+# array([[0.82770259, 0.40919914, 0.54959369],
+#       [0.02755911, 0.75351311, 0.53814331]])
+a.sum()
+# 3.1057109529998157
+z.min()
+# 0.027559113243068367
+z.max()
+# 0.8277025938204418
+
+'''
+b = np.arange(12).reshape(3, 4)
+b
+# array([[ 0,  1,  2,  3],
+#       [ 4,  5,  6,  7],
+#       [ 8,  9, 10, 11]])
+
+b.sum(axis=0)     # sum of each column
+# array([12, 15, 18, 21])
+
+b.min(axis=1)     # min of each row
+# array([0, 4, 8])
+
+b.cumsum(axis=1)  # cumulative sum along each row
+# array([[ 0,  1,  3,  6],
+#       [ 4,  9, 15, 22],
+#       [ 8, 17, 27, 38]])
+
+
+NumPy provides familiar mathematical functions such as sin, cos, and exp. In NumPy, 
+these are called “universal functions” (ufunc). Within NumPy, these functions operate elementwise on an array, producing an array as output.
+'''
+H = np.arange(5)
+print(np.cos(H))
+H
+# [ 1.          0.54030231 -0.41614684 -0.9899925  -0.65364362]
+# array([0, 1, 2, 3, 4])
+
+'''
+Indexing, slicing and iterating
+One-dimensional arrays can be indexed, sliced and iterated over, much like lists and other Python sequences.
+'''
+F = np.arange(10)**3    # Creates an array 0 to 9 but with each number exponentially raised to the 3rd power.
+F
+# array([  0,   1,   8,  27,  64, 125, 216, 343, 512, 729])
+F[2]
+# 8
+F[2:5]    # The 2 is inclusive, the 5 is not, and is just the index we just go up to.
+# array([ 8, 27, 64])
+
+J = np.arange(10)**3
+print(J)       # [ 0   1   8  27  64 125 216 343 512 729]
+print(J[::-1]) # [729 512 343 216 125  64  27   8   1   0]       Reverses NumPy array
