@@ -96,3 +96,41 @@ a.T.shape
 # (4, 3)
 a.shape
 # (3, 4)
+
+# Shallow Copy aka View
+e = a.view
+e.base is a
+# True     Because e is a shallow copy
+e.flags.owndata 
+# False    Because e is not it's own data, but a shallow copy of a.
+c = c.reshape((2, 6)) # a's shape doesn't change to 2,6.
+a.shape 
+#(3, 4)
+c[0, 4] = 1234     # a's data changes because c is a shallow copy.
+a
+#array([[   0,    1,    2,    3],
+#       [1234,    5,    6,    7],
+#       [   8,    9,   10,   11]])
+# slicing an array also returns a shallow copy of it.
+s = a[:, 1:3]
+s[:] = 10  # s[:] is a view of s. Note the difference between s = 10 and s[:] = 10
+a          # Observe how s is a shallow copy and changes a.
+#array([[   0,   10,   10,    3],
+#       [1234,   10,   10,    7],
+#       [   8,   10,   10,   11]])
+
+# Deep Copy.
+# The copy method makes a complete copy of the array and its data.
+# Sometimes copy should be called after slicing if the original array is not required anymore. 
+# For example, suppose a is a huge intermediate result and the final result b only contains a small fraction of a, 
+#     a deep copy should be made when constructing b with slicing:
+k = a.copy()  # a new array object with new data is created
+k is a
+# False
+k.base is a # k doesn't share anything with a
+# False
+k[0, 0] = 9999
+a
+#array([[   0,   10,   10,    3],
+#       [1234,   10,   10,    7],
+#       [   8,   10,   10,   11]])
