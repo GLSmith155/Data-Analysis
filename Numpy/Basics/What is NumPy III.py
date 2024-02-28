@@ -134,3 +134,12 @@ a
 #array([[   0,   10,   10,    3],
 #       [1234,   10,   10,    7],
 #       [   8,   10,   10,   11]])
+
+# Sometimes copy should be called after slicing if the original array is not required anymore. For example,
+# suppose a is a huge intermediate result and the final result b only contains a small fraction of a, a deep copy should be 
+# made when constructing b with slicing:
+
+a = np.arange(int(1e8))
+b = a[:100].copy()
+del a  # the memory of ``a`` can be released.
+# If b = a[:100] is used instead, a is referenced by b and will persist in memory even if del a is executed.
